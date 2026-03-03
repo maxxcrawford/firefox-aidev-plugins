@@ -1,9 +1,17 @@
 ---
 name: nova-cleanup-comments
-description: Add @nova-cleanup comments to Firefox newtab code to enable automated Claude-assisted cleanup after Nova ships. Use when adding cleanup comments to Nova-related changes.
+description: Use after tests pass on a Nova feature — before linting or formatting — to annotate changed files with @nova-cleanup instructions for post-launch automated cleanup. Triggers when the user signals tests are passing or the feature is working. The user can say "skip cleanup comments" to bypass this skill.
+allowed-tools:
+  - Read
+  - Edit
+  - Grep
+  - Glob
+  - Bash
 ---
 
 # Add Nova Cleanup Comments
+
+> Skip this skill by saying "skip cleanup comments".
 
 Add `@nova-cleanup` comments to Firefox newtab code following Project Nova implementation strategy.
 

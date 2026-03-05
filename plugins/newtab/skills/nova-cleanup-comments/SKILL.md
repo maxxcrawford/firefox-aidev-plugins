@@ -1,17 +1,16 @@
 ---
 name: nova-cleanup-comments
-description: Use after tests pass on a Nova feature — before linting or formatting — to annotate changed files with @nova-cleanup instructions for post-launch automated cleanup. Triggers when the user signals tests are passing or the feature is working. The user can say "skip cleanup comments" to bypass this skill.
+description: Use after tests pass on a Nova feature — before linting or formatting — to annotate changed files with @nova-cleanup instructions for post-launch automated cleanup.
 allowed-tools:
   - Read
   - Edit
   - Grep
   - Glob
-  - Bash
 ---
 
 # Add Nova Cleanup Comments
 
-> Skip this skill by saying "skip cleanup comments".
+> Do not add cleanup comments if the user says "skip cleanup comments".
 
 Add `@nova-cleanup` comments to Firefox newtab code following Project Nova implementation strategy.
 
@@ -54,13 +53,6 @@ Project Nova uses a parallel development approach where classic newtab stays unt
 ## Examples
 
 ```javascript
-// Logo.jsx - conditional rendering
-const prefs = useSelector(state => state.Prefs.values);
-// @nova-cleanup(remove-conditional): Delete novaEnabled and the wordmark div; always render the non-Nova branch
-const novaEnabled = prefs[PREF_NOVA_ENABLED];
-```
-
-```javascript
 // Entry point with component selection
 // @nova-cleanup(remove-pref): Delete this line; replace Base with NovaBase everywhere in this file
 const Base = prefs["browser.nova.enabled"] ? NovaBase : ClassicBase;
@@ -72,15 +64,6 @@ const Base = prefs["browser.nova.enabled"] ? NovaBase : ClassicBase;
 
 export class Base extends React.Component {
   // ...
-}
-```
-
-```scss
-// styles/nova/_card.scss
-// @nova-cleanup(merge-styles): Move contents into components/Card/_card.scss and delete this file
-
-.card {
-  // nova styles
 }
 ```
 
